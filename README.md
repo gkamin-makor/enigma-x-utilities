@@ -78,6 +78,53 @@ checkNumberPositivity('blbalbla')
 { success: false, message: 'blbalbla' should be type number }
 ```
 
+# Number Formatter
+
+Feature for formatting number according to overall and decimal digits count limit.
+
+```javascript
+const { numberFormatter, setConfig } = require('enigma-x-utilities');
+
+// Config Default values
+setConfig('numberFormatter', {
+	overallDigitLimit:5,
+	decimalDigitLimit:2,
+	useColors:true,
+	colors:{
+    positive:"green",
+    negative:"red"
+  }
+});
+```
+
+### Success
+
+```javascript
+// Validating & formatting phone number
+numberFormatter(123456.1)
+
+// Output
+
+{
+  success: true,
+  message: 'Successfully formatted number',
+  data: {
+    number: '123.45K',
+    color : 'green'
+  }
+}
+```
+
+### Error
+
+```javascript
+// Validating & formatting phone number
+numberFormatter('asd')
+
+// Output
+{ success: false, message: 'Input is not a valid number' }
+```
+
 # URL Validator
 
 Feature for validating & formatting URL, check if URL is valid & format the URL.
